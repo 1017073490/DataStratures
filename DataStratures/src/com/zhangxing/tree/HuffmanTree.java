@@ -17,6 +17,7 @@ import java.util.Collections;
  * 再将这颗新的二叉树，以根结点的权值大小再次排序。
  * 重复上述步骤。
  * 尝试远程。。。
+ * 尝试提交。。。
  */
 public class HuffmanTree {
     public static void main(String[] args) {
