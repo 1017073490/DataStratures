@@ -16,6 +16,7 @@ import java.util.Collections;
  * 该二叉树的根节点的权值是前面两颗二叉树根节点权值的和
  * 再将这颗新的二叉树，以根结点的权值大小再次排序。
  * 重复上述步骤。
+ * 尝试远程。。。
  */
 public class HuffmanTree {
     public static void main(String[] args) {
