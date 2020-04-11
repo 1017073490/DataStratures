@@ -6,4 +6,7 @@ package com.zhangxing.tree;
  * @date 2020-4-11 21:45
  */
 public class GitHubTest {
+    public static void main(String[] args) {
+
+    }
 }

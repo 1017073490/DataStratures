@@ -37,7 +37,7 @@ public class HeapSort {
             adjustHeap(arr, 0, j);
         }
 
-//        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(arr));
     }
 
     /**
