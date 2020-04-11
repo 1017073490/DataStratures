@@ -18,14 +18,8 @@ import java.util.Random;
 public class HeapSort {
     public static void main(String[] args) {
         //升序要求大顶堆
-//        int[] arr = {4, 6, 8, 5, 9, 12, 87, -3};
-        int[] arr = new int[8000000];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = new Random().nextInt(100000);
-        }
-        TimeUtils.getTime();
+        int[] arr = {4, 6, 8, 5, 9, 12, 87, -3};
         heapSort(arr);
-        TimeUtils.getTime();
     }
 
     public static void heapSort(int[] arr) {
