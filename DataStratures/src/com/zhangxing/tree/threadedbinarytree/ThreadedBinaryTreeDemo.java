@@ -7,7 +7,7 @@ package com.zhangxing.tree.threadedbinarytree;
  */
 public class ThreadedBinaryTreeDemo {
     public static void main(String[] args) {
-        ThreadedBinaryTree binaryTree = new ThreadedBinaryTree();
+        ThreadedBinaryTree threadedBinaryTree = new ThreadedBinaryTree();
         HeroNode root = new HeroNode(1, "zx");
         HeroNode node2 = new HeroNode(3, "gy");
         HeroNode node3 = new HeroNode(6, "zf");
@@ -20,12 +20,10 @@ public class ThreadedBinaryTreeDemo {
         node2.setRightNode(node5);
         node3.setLeftNode(node6);
         //线索化
-        binaryTree.setRoot(root);
-        binaryTree.infixThreadedNodes();
-//        System.out.println(node5.getLeftNode());
-//        System.out.println(node5.getRightNode());
+        threadedBinaryTree.setRoot(root);
+        threadedBinaryTree.preThreadedNodes();
         System.out.println("线索化遍历线索化二叉树：");
-        binaryTree.infixThreadedShowList();
+        threadedBinaryTree.preThreadedShowList();
 
     }
 }
@@ -42,12 +40,15 @@ class ThreadedBinaryTree {
         this.root = root;
     }
 
+
+    /**
+     * 中序线索化二叉树与重载
+     */
     public void infixThreadedNodes() {
         this.infixThreadedNodes(root);
     }
 
     public void infixThreadedNodes(HeroNode node) {
-        //heroNode就是需要线索化的结点
         if (node == null) {
             return;
         }
@@ -74,6 +75,10 @@ class ThreadedBinaryTree {
         infixThreadedNodes(node.getRightNode());
     }
 
+
+    /**
+     * 先序线索化二叉树与重载
+     */
     public void preThreadedNodes() {
         this.preThreadedNodes(root);
     }
@@ -108,29 +113,32 @@ class ThreadedBinaryTree {
 
     }
 
+
+
     public void infixThreadedShowList() {
         //定义一个变量，存储当前遍历的结点。从root开始。
         HeroNode node = root;
         while (node != null) {
             while (node.getLeftType() == 0) {
-                System.out.println(node);
                 node = node.getLeftNode();
             }
+            System.out.println(node);
             while (node.getRightType() == 1) {
-                System.out.println(node);
                 node = node.getRightNode();
-
+                System.out.println(node);
             }
             node = node.getRightNode();
         }
+        System.out.println();
     }
 
     public void preThreadedShowList() {
         //定义一个变量，存储当前遍历的结点。从root开始。
         HeroNode node = root;
         while (node != null) {
-            //循环找到leftType == 1d 结点。
+            //循环找到leftType == 1 的结点。
             while (node.getLeftType() == 0) {
+                System.out.println(node);
                 node = node.getLeftNode();
             }
             //找到，输出
@@ -139,6 +147,7 @@ class ThreadedBinaryTree {
             while (node.getRightType() == 1) {
                 node = node.getRightNode();
                 System.out.println(node);
+
             }
             node = node.getRightNode();
         }
