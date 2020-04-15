@@ -18,24 +18,26 @@ public class BinaryTreeDemo {
         //先手动创建，后面再递归创建
         root.setLeftNode(node2);
         root.setRightNode(node3);
-        node3.setRightNode(node4);
-        node3.setLeftNode(node5);
+        node2.setRightNode(node5);
+        node2.setLeftNode(node4);
         binaryTree.setRoot(root);
 
 
         System.out.println("前序：");
         binaryTree.preOrder();
         binaryTree.deleteNode(5);
-        System.out.println("============");
+        System.out.println("删除结点后：");
         binaryTree.preOrder();
-//        System.out.println("中序：");
-//        HeroNode resInfixNode = binaryTree.infixOrderSearch(5);
-//        System.out.println(resInfixNode);
-////        binaryTree.infixOrder();
-//        System.out.println("后序：");
-//        HeroNode resPostNode = binaryTree.postOrderSearch(1);
-//        System.out.println(resPostNode);
-////        binaryTree.postOrder();
+        System.out.println("============");
+        System.out.println("中序：");
+        HeroNode resInfixNode = binaryTree.infixOrderSearch(5);
+        System.out.println(resInfixNode);
+//        binaryTree.infixOrder();
+        System.out.println("============");
+        System.out.println("后序：");
+        HeroNode resPostNode = binaryTree.postOrderSearch(1);
+        System.out.println(resPostNode);
+//        binaryTree.postOrder();
 
     }
 }
@@ -228,7 +230,7 @@ class HeroNode {
      */
 
     public HeroNode preOrderSearch(int id) {
-        System.out.println("进入前序。。。");
+        System.out.println("进入前序");
         if (this.id == id) {
             return this;
         }
@@ -253,7 +255,7 @@ class HeroNode {
         if (resNode != null) {
             return resNode;
         }
-        System.out.println("进入中序。。。");
+        System.out.println("进入中序");
         if (this.id == id) {
             return this;
         }
@@ -277,7 +279,7 @@ class HeroNode {
         if (resNode != null) {
             return resNode;
         }
-        System.out.println("进入后序。。。");
+        System.out.println("进入后序");
         if (this.id == id) {
             return this;
         }

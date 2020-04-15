@@ -4,6 +4,7 @@ package com.zhangxing.tree;
  * @author zhangxing
  * @version 1.0
  * @date 2020-4-10 19:44
+ * 顺序存储二叉树
  */
 public class ArrBinaryTreeDemo {
     public static void main(String[] args) {

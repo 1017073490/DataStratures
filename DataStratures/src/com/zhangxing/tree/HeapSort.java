@@ -34,6 +34,7 @@ public class HeapSort {
             temp = arr[j];
             arr[j] = arr[0];
             arr[0] = temp;
+            //真实的调整总是从第一个开始。这样遍历所有非叶子结点
             adjustHeap(arr, 0, j);
         }
 

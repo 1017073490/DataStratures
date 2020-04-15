@@ -33,7 +33,6 @@ public class HuffmanCode {
     }
 
     public static void unZipFile(String zipFile, String dstFile){
-
         InputStream is = null;
         ObjectInputStream ois = null;
         OutputStream os = null;
