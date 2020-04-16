@@ -19,7 +19,8 @@ public class HeapSort {
     public static void main(String[] args) {
         //升序要求大顶堆
         int[] arr = {4, 6, 8, 5, 9, 12, 87, -3};
-        heapSort(arr);
+        int[] arr2 = {4, 6, 8, 5, 9};
+        heapSort(arr2);
     }
 
     public static void heapSort(int[] arr) {

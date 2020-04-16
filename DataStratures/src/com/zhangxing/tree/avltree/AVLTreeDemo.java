@@ -220,7 +220,7 @@ class Node {
         }
         //如果（右子树的高度-左子树的高度） > 1
         if ((this.rightHeight() - this.leftHeight()) > 1) {
-            //增加一个判断：如果 它的右子树的左子树 大于 它的右子树的右子树 的高度。要先进行左旋
+            //增加一个判断：如果 它的右子树的左子树 大于 它的右子树的右子树 的高度。要先进行右旋
             if (this.rightNode != null &&
                     this.rightNode.leftHeight() > this.rightNode.rightHeight()) {
                 //先对当前结点的右子树进行右旋

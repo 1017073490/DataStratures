@@ -31,7 +31,6 @@ public class HashTableDemo {
         hashTable.add(employee9);
         hashTable.showList();
     }
-
     public static void showMenu(){
         HashTable hashTable = new HashTable(7);
         char key = ' ';
@@ -94,7 +93,7 @@ class HashTable {
         //根据员工的id得到该员工应该加入哪条链表
         int empLinkedListNo = hashFun(employee.id);
         //将employee加入到对应的链表
-        empLinkedList[empLinkedListNo].addByOrder(employee);
+        empLinkedList[empLinkedListNo].add(employee);
     }
 
     public void showList() {
@@ -114,7 +113,6 @@ class HashTable {
         }
         return employee;
     }
-
 
     private int hashFun(int id) {
         //编写散列函数
@@ -147,33 +145,6 @@ class EmpLinkedList {
         }
         curEmp.next = employee;
 
-    }
-
-    public void addByOrder(Employee employee) {
-        if (head == null) {
-            head = employee;
-            return;
-        }
-        Employee curEmp = head;
-
-        while (true) {
-            if (curEmp.id > employee.id) {
-                curEmp.next = employee;
-                employee.next = curEmp;
-                break;
-            }
-            if (curEmp.next == null){
-                curEmp.next = employee;
-                break;
-            }
-//            if (curEmp.next.id > employee.id){
-//                //就应该放在次curEmp的下一个
-//                employee.next = curEmp.next;
-//                curEmp.next = employee;
-//                break;
-//            }
-            curEmp = curEmp.next;
-        }
     }
 
     public void showList(int id) {
