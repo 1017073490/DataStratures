@@ -7,7 +7,7 @@ package com.zhangxing.algorithm;
  * 复杂问题分解成简单的子问题，再将子问题的解合并为原问题的解。
  * @date 2020/4/17 9:04
  */
-public class DACAlgorithm {
+public class HanoiTower {
     static int count = 0;
     public static void main(String[] args) {
 
