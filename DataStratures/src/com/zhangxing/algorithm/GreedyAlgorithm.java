@@ -6,6 +6,9 @@ import java.util.*;
  * @author zhangxing
  * @Description: 贪心算法解决集合覆盖代码实现
  * @date 2020/4/17 18:46
+ * 遍历所有的广播电台，找到一个覆盖了最多未覆盖的地区的电台
+ * 将这个电台加入到一个集合中，想办法把该电台所覆盖的地区在下次比较时去掉
+ * 重复上述步骤直至覆盖全部地区
  */
 public class GreedyAlgorithm {
     private static HashSet<String> allAreas;
@@ -18,7 +21,6 @@ public class GreedyAlgorithm {
         initAllAreas(broadCasts);
         System.out.println(allAreas);
         greedyAlgorithm();
-
     }
 
     private static void greedyAlgorithm() {
