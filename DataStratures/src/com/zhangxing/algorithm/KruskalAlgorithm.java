@@ -17,17 +17,17 @@ import com.zhangxing.sort.BubbleSort;
  */
 @SuppressWarnings("all")
 public class KruskalAlgorithm {
-    private int edgeNum;
-    private char[] vertexs = new char[7];
-    private int[][] matrix = new int[7][7];
-    private static final int INF = Integer.MAX_VALUE;
+    public int edgeNum;
+    public char[] vertexs = new char[7];
+    public int[][] matrix = new int[7][7];
+    public static final int INF = Integer.MAX_VALUE;
 
     public static void main(String[] args) {
         KruskalAlgorithm initKruskal = init();
         initKruskal.Kruskal();
     }
 
-    private static KruskalAlgorithm init() {
+    public static KruskalAlgorithm init() {
         int edgeNum = 0;
         char[] vertexs = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
         int[][] matrix = {
@@ -49,6 +49,15 @@ public class KruskalAlgorithm {
         KruskalAlgorithm kruskal = new KruskalAlgorithm(edgeNum, vertexs, matrix);
         kruskal.print(vertexs, matrix);
         return kruskal;
+    }
+
+    public KruskalAlgorithm() {
+    }
+
+    public KruskalAlgorithm(int edgeNum, char[] vertexs, int[][] matrix) {
+        this.edgeNum = edgeNum;
+        this.vertexs = vertexs;
+        this.matrix = matrix;
     }
 
     public void Kruskal() {
@@ -85,13 +94,7 @@ public class KruskalAlgorithm {
 
     }
 
-    private KruskalAlgorithm(int edgeNum, char[] vertexs, int[][] matrix) {
-        this.edgeNum = edgeNum;
-        this.vertexs = vertexs;
-        this.matrix = matrix;
-    }
-
-    private void print(char[] vertexs, int[][] matrix) {
+    public void print(char[] vertexs, int[][] matrix) {
         System.out.println("邻接矩阵:");
         for (int i = 0; i < vertexs.length; i++) {
             for (int j = 0; j < vertexs.length; j++) {
