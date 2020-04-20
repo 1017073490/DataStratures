@@ -13,9 +13,14 @@ import java.util.Arrays;
  * 过程：
  */
 public class PrimAlgorithm {
-    private static int MAX = 100;
+
 
     public static void main(String[] args) {
+        new PrimAlgorithm().prim();
+    }
+
+    public void prim(){
+        int MAX = 100;
         char[] data = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
         int verxs = data.length;
         //描述邻接矩阵
@@ -32,12 +37,8 @@ public class PrimAlgorithm {
         MGraph mGraph = new MGraph(verxs);
         MinTree minTree = new MinTree();
         minTree.initGraph(mGraph, verxs, data, weight);
-        minTree.showGraph(mGraph);
         minTree.prim(mGraph,2);
-
     }
-
-
 }
 
 
@@ -49,7 +50,7 @@ class MinTree {
      * @param data   图的各个顶点的值
      * @param weight 图的邻接矩阵
      */
-    public static void initGraph(MGraph mGraph, int verxs, char[] data, int[][] weight) {
+    public void initGraph(MGraph mGraph, int verxs, char[] data, int[][] weight) {
         for (int i = 0; i < verxs; i++) {
             mGraph.data[i] = data[i];
             for (int j = 0; j < verxs; j++) {
@@ -58,7 +59,7 @@ class MinTree {
         }
     }
 
-    public static void showGraph(MGraph mGraph) {
+    public void showGraph(MGraph mGraph) {
         for (int[] link : mGraph.weight) {
             System.out.println(Arrays.toString(link));
         }

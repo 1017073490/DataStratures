@@ -11,6 +11,14 @@ import java.util.Arrays;
 public class Dijkstra {
 
     public static void main(String[] args) {
+        Dijkstra dijkstra = new Dijkstra();
+        Graph graph = dijkstra.init();
+        graph.showGraph();
+        graph.dijkstra(6);
+        graph.showRes();
+    }
+
+    public Graph init(){
         char[] vertex = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
         int[][] matrix = new int[7][7];
         final int N = 65535;
@@ -22,9 +30,7 @@ public class Dijkstra {
         matrix[5] = new int[]{N, N, N, 4, 5, N, 6};
         matrix[6] = new int[]{2, 3, N, N, 4, 6, N};
         Graph graph = new Graph(vertex, matrix);
-        graph.showGraph();
-        graph.dijkstra(6);
-        graph.showRes();
+        return graph;
     }
 
 }

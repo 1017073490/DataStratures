@@ -15,9 +15,16 @@ import java.util.Arrays;
  * 进而求出每个顶点到其他顶点的距离。
  */
 public class FloydAlgorithm {
-    static final int N = 65535;
+    private static final int N = 65535;
 
     public static void main(String[] args) {
+        FloydAlgorithm floyd = new FloydAlgorithm();
+        fGraph fGraph = floyd.init();
+        fGraph.floyd();
+        fGraph.show();
+    }
+
+    private fGraph init(){
         char[] vertex = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
         int[][] matrix = {
                 {0, 5, 7, N, N, N, 2},
@@ -28,9 +35,7 @@ public class FloydAlgorithm {
                 {N, N, N, 4, 5, 0, 6},
                 {2, 3, N, N, 4, 6, 0}
         };
-        fGraph fGraph = new fGraph(vertex.length, matrix, vertex);
-        fGraph.floyd();
-        fGraph.show();
+        return new fGraph(vertex.length, matrix, vertex);
     }
 }
 
