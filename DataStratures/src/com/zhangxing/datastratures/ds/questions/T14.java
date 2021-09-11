@@ -329,14 +329,54 @@ public class T14 {
 
     public void sortColors(int[] nums) {
         // 常规排序算法
-        for (int i = 0; i < nums.length - 1; i++) {
-            for (int j = 0; j < nums.length - i - 1; j++) {
-                if (nums[j] > nums[j + 1]) {
-                    int temp = nums[j];
-                    nums[j] = nums[j + 1];
-                    nums[j + 1] = temp;
-                }
+//        for (int cur = 0; cur < nums.length - 1; cur++) {
+//            for (int j = 0; j < nums.length - cur - 1; j++) {
+//                if (nums[j] > nums[j + 1]) {
+//                    int temp = nums[j];
+//                    nums[j] = nums[j + 1];
+//                    nums[j + 1] = temp;
+//                }
+//            }
+//        }
+        // 循环不变量
+        // 首先是一些特值处理
+        int len = nums.length;
+        if (len < 2) {
+            return;
+        }
+        // all in [0,zero) is 0
+        // all in [zero,cur) is 1
+        // all in [two,len-1) is
+        // 循环中止条件是 cur==two，那么循环可以继续的条件为 cur<two
+        // 保证初始化 [0,zero)为空，zero=0！重点：遍历到0，先交换，再++
+        // 保证初始化 [two,len-1)为空，two=len！重点：遍历到2，先--，再交换（取不到len下标）
+        int zero = 0;
+        int two = len;
+        int cur = 0;
+        // i==two时覆盖全部区间
+        while (cur < two) {
+            if (nums[cur] == 0) {
+                // 和前面的cur交换
+                swap(nums, cur, zero);
+                cur++;
+                zero++;
+            } else if (nums[cur] == 1) {
+                // 直接往后移动
+                cur++;
+            } else {
+                // 和当前最后面的下标交换
+                two--;
+                swap(nums, cur, two);
+                // 为什么不需要cur++?
+                // 因为交换完之后，当前index[cur]的值已经不是原来的2了
+                // 这个值是否需要进一步修改它的位置仍需要遍历一遍。嗯，很准确。。。
             }
         }
+    }
+
+    private void swap(int[] nums, int index1, int index2) {
+        int temp = nums[index1];
+        nums[index1] = nums[index2];
+        nums[index2] = temp;
     }
 }
