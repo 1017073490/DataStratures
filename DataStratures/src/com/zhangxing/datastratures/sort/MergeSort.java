@@ -2,6 +2,7 @@ package com.zhangxing.datastratures.sort;
 
 import com.zhangxing.datastratures.util.TimeUtils;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -17,14 +18,15 @@ import java.util.Random;
  */
 public class MergeSort {
     public static void main(String[] args) {
-        //int[] array = {8, 4, 5, 7, 1, 3, 6, 2};
-        int[] array = new int[8000000];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = new Random().nextInt(1000000);
-        }
+        int[] array = {8, 4, 5, 7, 1, 3, 6, 2};
+//        int[] array = new int[8000000];
+//        for (int i = 0; i < array.length; i++) {
+//            array[i] = new Random().nextInt(1000000);
+//        }
         int[] temp = new int[array.length];
         TimeUtils.getTime();
-        mergeSort(array, 0, array.length - 1, temp);
+        mergeSortByZx(array, 0, array.length - 1, temp);
+        Arrays.stream(array).forEach(System.out::println);
         TimeUtils.getTime();
         //System.out.println(Arrays.toString(array));
 
@@ -34,10 +36,10 @@ public class MergeSort {
         if (left < right) {
             int mid = (left + right) / 2;
             //左递归分解
-            mergeSort(array, left, mid, temp);
+            mergeSortByZx(array, left, mid, temp);
             //右递归分解
-            mergeSort(array, mid + 1, right, temp);
-            merge(array, left, mid, right, temp);
+            mergeSortByZx(array, mid + 1, right, temp);
+            mergeByZx(array, left, mid, right, temp);
         }
     }
 
@@ -88,5 +90,45 @@ public class MergeSort {
             tempLeft += 1;
         }
 
+    }
+
+
+    public static void mergeSortByZx(int[] array, int left, int right, int[] temp) {
+        if (left < right) {
+            int mid = (left + right) / 2;
+            mergeSortByZx(array, left, mid, temp);
+
+            mergeSortByZx(array, mid + 1, right, temp);
+
+            mergeByZx(array, left, mid, right, temp);
+        }
+    }
+
+    public static void mergeByZx(int[] array, int left, int mid, int right, int[] temp) {
+        //统一把mid所在下标归到左边序列。
+        int t = 0;
+        int i = left;
+        int j = mid + 1;
+        while (i <= mid && j <= right) {
+            //只要下标还满足，也就是左右子序列的元素还没有移动到最后
+            if (array[i] <= array[j]) {
+                temp[t++] = array[i++];
+            } else {
+                temp[t++] = array[j++];
+            }
+        }
+        //有一边结束，剩余的直接拖过去
+        while (i <= mid) {
+            temp[t++] = array[i++];
+        }
+        while (j <= right) {
+            temp[t++] = array[j++];
+        }
+        //合并
+        t = 0;
+        int tempLeft = left;
+        while (tempLeft <= right) {
+            array[tempLeft++] = temp[t++];
+        }
     }
 }

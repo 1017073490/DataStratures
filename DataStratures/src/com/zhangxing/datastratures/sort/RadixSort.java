@@ -2,6 +2,7 @@ package com.zhangxing.datastratures.sort;
 
 import com.zhangxing.datastratures.util.TimeUtils;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -16,13 +17,13 @@ import java.util.Random;
  * 这样从最低位排序一直到最高位排序完以后，数列就变成了有序数列。
  */
 public class RadixSort {
-    //static int[] array = {53, 3, 542, 748, 14, 214, 100, 1227, 421};
+    static int[] array = {53, 3, 542, 748, 14, 214, 100, 1227, 421};
 
     public static void main(String[] args) {
-        int[] array = new int[8000000];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = new Random().nextInt(1000000);
-        }
+//        int[] array = new int[8000000];
+//        for (int i = 0; i < array.length; i++) {
+//            array[i] = new Random().nextInt(1000000);
+//        }
         TimeUtils.getTime();
         radixSort(array);
         TimeUtils.getTime();
@@ -65,7 +66,7 @@ public class RadixSort {
                 //每一轮结束后，需要将每个bucketElementCounts[k]置为0
                 bucketElementCounts[k] = 0;
             }
-            //System.out.println(Arrays.toString(array));
+            System.out.println(Arrays.toString(array));
         }
 
 

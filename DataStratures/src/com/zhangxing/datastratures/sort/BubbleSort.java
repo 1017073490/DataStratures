@@ -2,6 +2,7 @@ package com.zhangxing.datastratures.sort;
 
 import com.zhangxing.datastratures.util.TimeUtils;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -15,13 +16,14 @@ import java.util.Random;
  */
 public class BubbleSort {
     public static void main(String[] args) {
-        //int[] array = {3, 9, -1, 10, 20};
-        int[] array = new int[80000];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = new Random().nextInt(100000);
-        }
+        int[] array = {3, 9, -1, 10, 20,-34,104,127,813,2};
+//        int[] array = new int[80000];
+//        for (int i = 0; i < array.length; i++) {
+//            array[i] = new Random().nextInt(100000);
+//        }
         TimeUtils.getTime();
-        bubbleSort(array);
+        bubbleSortCreateByZX(array);
+        Arrays.stream(array).forEach(System.out::println);
         TimeUtils.getTime();
 
     }
@@ -46,4 +48,19 @@ public class BubbleSort {
             }
         }
     }
+
+    public static void bubbleSortCreateByZX(int[] array) {
+        int num = array.length - 1;
+        for (int i = 0; i <= num-1; i++) {
+            for (int j = 0; j < num - i; j++) {
+                //两两比较
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+    }
+
 }

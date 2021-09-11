@@ -8,17 +8,17 @@ import java.util.Random;
  * @author zhangxing
  * @version 1.0
  * @date 2020-4-7 12:52
- * 希尔排序：
+ * 希尔排序：希尔排序的实质就是分组的插入排序
  * 它是把记录按下标的一定增量分组，对每组使用直接插入排序进行排序。
  * 随着增量的减少，每组包含的关键词越来越多，当增量减少到1时，整个待排序序列就被分为一组，算法终止。
  */
 public class ShellSort {
     public static void main(String[] args) {
-//        int[] array = {8, 9, 1, 7, 2, 3, 5, 4, 6, 0};
-        int[] array = new int[8000000];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = new Random().nextInt(100000);
-        }
+        int[] array = {8, 9, 1, 7, 2, 3, 5, 4, 6, 0};
+//        int[] array = new int[8000000];
+//        for (int i = 0; i < array.length; i++) {
+//            array[i] = new Random().nextInt(100000);
+//        }
         TimeUtils.getTime();
         shellSortImprove(array);
         TimeUtils.getTime();

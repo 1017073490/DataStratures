@@ -2,6 +2,7 @@ package com.zhangxing.datastratures.sort;
 
 import com.zhangxing.datastratures.util.TimeUtils;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -15,18 +16,19 @@ import java.util.Random;
  * 。。。
  * 第i次从array[i-1]~array[n-1]中选取最小值，与array[i-1]交换。
  * 。。。
- * 第n-1次从array[n-2]~array[n-1]中选取最小值，与array[i-2]交换。
+ * 第n-1次从array[n-2]~array[n-1]中选取最小值，与array[n-2]交换。
  * 总共通过n-1次比较，得到一个有序序列。
  */
 public class SelectSort {
     public static void main(String[] args) {
-        //int[] array = {101, 34, 119, 1, -1, 99, 100};
-        int[] array = new int[80000];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = new Random().nextInt(100000);
-        }
+        int[] array = {394, -93, 34, 101, 34, 119, 1, -1, 99, 1, 100};
+//        int[] array = new int[80000];
+//        for (int i = 0; i < array.length; i++) {
+//            array[i] = new Random().nextInt(100000);
+//        }
         TimeUtils.getTime();
-        selectSort(array);
+        selectSortCreateByZX(array);
+        Arrays.stream(array).forEach(System.out::println);
         TimeUtils.getTime();
     }
 
@@ -47,5 +49,25 @@ public class SelectSort {
             }
         }
         //System.out.println(Arrays.toString(array));
+    }
+
+    public static void selectSortCreateByZX(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            int min = array[i];
+            int minIndex = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] < min) {
+                    //记录
+                    min = array[j];
+                    minIndex = j;
+                }
+            }
+            //交换
+            if (minIndex != i) {
+                int temp = array[i];
+                array[i] = array[minIndex];
+                array[minIndex] = temp;
+            }
+        }
     }
 }
